@@ -1,0 +1,13 @@
+From,To,Flow
+A,B,10
+B,A,10
+A,C,0
+C,A,0
+A,D,50
+D,A,50
+B,C,20
+C,B,20
+B,D,0
+D,B,0
+C,D,30
+D,C,30
