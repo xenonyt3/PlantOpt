@@ -56,8 +56,11 @@ This will automatically start the Streamlit server and open the application in y
 
 ## 📈 How It Works
 
-1. **Initialization**: The application takes an initial grid layout and a flow/cost matrix between departments.
-2. **Evaluation**: It calculates the centroids of each department and computes the total material handling cost based on rectilinear (Manhattan) distances.
-3. **Iterative Swapping**: The CRAFT algorithm evaluates all valid pairwise swaps (departments that are adjacent or share the same area).
-4. **Optimization**: If a swap reduces the total cost, it becomes the new layout. This process repeats until no further cost reductions can be found or the maximum iteration limit is reached.
-5. **Results**: The cost reductions, iteration history, and the final optimized layout are displayed in the UI.
+The workflow directly mimics QS-style facility layout software, allowing sequential design steps:
+
+1. **Input Departments & Area**: Specify the total number of departments and assign an area footprint to each.
+2. **Input From-To Matrix (Flow)**: Enter the frequency/flow of materials between defined departments within an NxN data matrix.
+3. **Generate Initial Layout**: Create a grid (rows x cols) large enough to accommodate the total area. The layout can be auto-generated or manually filled by plotting departments onto the grid.
+4. **Calculate Cost**: Given the initial layout and flows, calculate an initial material handling cost (Rectilinear Manhattan Distance × Flow).
+5. **Run CRAFT Optimization**: The CRAFT algorithm iteratively evaluates all valid pairwise swaps (departments of equal area, or bordering neighbors), continuing until no valid swaps improve the overall cost.
+6. **Results & Metrics**: Final grids are visualized via heatmaps, alongside cost improvement percentages and step-by-step iteration charts.
